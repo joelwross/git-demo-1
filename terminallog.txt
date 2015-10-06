@@ -1,0 +1,159 @@
+Last login: Tue Oct  6 10:22:09 on console
+is-m430m27-01x:~ iguest$ cd Desktop/
+is-m430m27-01x:Desktop iguest$ ls
+Dropbox.app         UW Google Drive.webloc
+Launch Windows 10       UW OneDrive for Business.webloc
+Logout              What Is U Drive.webloc
+U Drive.inetloc
+is-m430m27-01x:Desktop iguest$ git
+usage: git [--version] [--help] [-C <path>] [-c name=value]
+           [--exec-path[=<path>]] [--html-path] [--man-path] [--info-path]
+           [-p|--paginate|--no-pager] [--no-replace-objects] [--bare]
+           [--git-dir=<path>] [--work-tree=<path>] [--namespace=<name>]
+           <command> [<args>]
+
+The most commonly used git commands are:
+   add        Add file contents to the index
+   bisect     Find by binary search the change that introduced a bug
+   branch     List, create, or delete branches
+   checkout   Checkout a branch or paths to the working tree
+   clone      Clone a repository into a new directory
+   commit     Record changes to the repository
+   diff       Show changes between commits, commit and working tree, etc
+   fetch      Download objects and refs from another repository
+   grep       Print lines matching a pattern
+   init       Create an empty Git repository or reinitialize an existing one
+   log        Show commit logs
+   merge      Join two or more development histories together
+   mv         Move or rename a file, a directory, or a symlink
+   pull       Fetch from and integrate with another repository or a local branch
+   push       Update remote refs along with associated objects
+   rebase     Forward-port local commits to the updated upstream head
+   reset      Reset current HEAD to the specified state
+   rm         Remove files from the working tree and from the index
+   show       Show various types of objects
+   status     Show the working tree status
+   tag        Create, list, delete or verify a tag object signed with GPG
+
+'git help -a' and 'git help -g' list available subcommands and some
+concept guides. See 'git help <command>' or 'git help <concept>'
+to read about a specific subcommand or concept.
+is-m430m27-01x:Desktop iguest$ git config --global user.email "joelross@uw.edu"
+is-m430m27-01x:Desktop iguest$ git config --global user.name "Joel Ross"
+is-m430m27-01x:Desktop iguest$ git clone https://github.com/joelwross/git-demo-1.git
+Cloning into 'git-demo-1'...
+remote: Counting objects: 10, done.
+remote: Total 10 (delta 0), reused 0 (delta 0), pack-reused 10
+Unpacking objects: 100% (10/10), done.
+Checking connectivity... done.
+is-m430m27-01x:Desktop iguest$ ls
+Dropbox.app         UW Google Drive.webloc
+Launch Windows 10       UW OneDrive for Business.webloc
+Logout              What Is U Drive.webloc
+U Drive.inetloc         git-demo-1
+is-m430m27-01x:Desktop iguest$ cd git-demo-1/
+is-m430m27-01x:git-demo-1 iguest$ ls
+README.md   css     img     index.html
+is-m430m27-01x:git-demo-1 iguest$ ls -al
+total 16
+drwxr-xr-x   7 iguest  staff  238 Oct  6 10:55 .
+drwx------+ 12 iguest  staff  408 Oct  6 10:55 ..
+drwxr-xr-x  13 iguest  staff  442 Oct  6 10:55 .git
+-rw-r--r--   1 iguest  staff   38 Oct  6 10:55 README.md
+drwxr-xr-x   3 iguest  staff  102 Oct  6 10:55 css
+drwxr-xr-x   5 iguest  staff  170 Oct  6 10:55 img
+-rw-r--r--   1 iguest  staff  256 Oct  6 10:55 index.html
+is-m430m27-01x:git-demo-1 iguest$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+nothing to commit, working directory clean
+is-m430m27-01x:git-demo-1 iguest$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+    modified:   index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+is-m430m27-01x:git-demo-1 iguest$ git add .
+is-m430m27-01x:git-demo-1 iguest$ git status
+On branch master
+Your branch is up-to-date with 'origin/master'.
+Changes to be committed:
+  (use "git reset HEAD <file>..." to unstage)
+
+    modified:   index.html
+
+is-m430m27-01x:git-demo-1 iguest$ git commit -m "Add lorem text to the index"
+[master c7341d1] Add lorem text to the index
+ 1 file changed, 8 insertions(+)
+is-m430m27-01x:git-demo-1 iguest$ git status
+On branch master
+Your branch is ahead of 'origin/master' by 1 commit.
+  (use "git push" to publish your local commits)
+nothing to commit, working directory clean
+is-m430m27-01x:git-demo-1 iguest$ git log
+commit c7341d1f836f3c8565d68862c967170c35eed265
+Author: Joel Ross <joelross@uw.edu>
+Date:   Tue Oct 6 11:04:03 2015 -0700
+
+    Add lorem text to the index
+
+commit e2a58cec5380eb29543f119b043cadcc6113bef5
+Author: Joel Ross <joelross@uw.edu>
+Date:   Sun Oct 4 19:34:55 2015 -0700
+
+    Add stub files for git demo
+is-m430m27-01x:git-demo-1 iguest$ git log --oneline
+c7341d1 Add lorem text to the index
+e2a58ce Add stub files for git demo
+is-m430m27-01x:git-demo-1 iguest$ git checkout e2a57ce
+error: pathspec 'e2a57ce' did not match any file(s) known to git.
+is-m430m27-01x:git-demo-1 iguest$ git checkout e2a58ce
+Note: checking out 'e2a58ce'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by performing another checkout.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -b with the checkout command again. Example:
+
+  git checkout -b new_branch_name
+
+HEAD is now at e2a58ce... Add stub files for git demo
+is-m430m27-01x:git-demo-1 iguest$ git checkout HEAD
+is-m430m27-01x:git-demo-1 iguest$ git status
+HEAD detached at e2a58ce
+nothing to commit, working directory clean
+is-m430m27-01x:git-demo-1 iguest$ git checkout --
+is-m430m27-01x:git-demo-1 iguest$ git checkout c7341d1
+Previous HEAD position was e2a58ce... Add stub files for git demo
+HEAD is now at c7341d1... Add lorem text to the index
+is-m430m27-01x:git-demo-1 iguest$ git status
+HEAD detached at c7341d1
+nothing to commit, working directory clean
+is-m430m27-01x:git-demo-1 iguest$ git status
+HEAD detached at c7341d1
+nothing to commit, working directory clean
+is-m430m27-01x:git-demo-1 iguest$ git push origin master
+Username for 'https://github.com': joelwross
+Password for 'https://joelwross@github.com': 
+remote: Invalid username or password.
+fatal: Authentication failed for 'https://github.com/joelwross/git-demo-1.git/'
+is-m430m27-01x:git-demo-1 iguest$ git push origin master
+Username for 'https://github.com': joelwross
+Password for 'https://joelwross@github.com': 
+Counting objects: 3, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 1.06 KiB | 0 bytes/s, done.
+Total 3 (delta 1), reused 0 (delta 0)
+To https://github.com/joelwross/git-demo-1.git
+   e2a58ce..c7341d1  master -> master
+is-m430m27-01x:git-demo-1 iguest$ git status
+HEAD detached at c7341d1
+nothing to commit, working directory clean
+is-m430m27-01x:git-demo-1 iguest$ 
